@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">M08_StartedService</string>
+    <string name="tv_message">Start or Stop a Service</string>
+    <string name="switch_on">Start</string>
+    <string name="switch_off">Stop</string>
+</resources>
