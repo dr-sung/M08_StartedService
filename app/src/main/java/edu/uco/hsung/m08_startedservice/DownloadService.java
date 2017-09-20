@@ -21,6 +21,7 @@ public class DownloadService extends Service {
                 Process.THREAD_PRIORITY_BACKGROUND);
         thread.start();
 
+        // anonymous class
         serviceHandler = new Handler(thread.getLooper()) {
             @Override
             public void handleMessage(Message msg) {
