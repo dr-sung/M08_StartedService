@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.widget.Toast;
 
 public class DownloadIntentService extends IntentService {
+
+    private String filename;
+
     /**
      * A constructor is required, and must call the super IntentService(String)
      * constructor with a name for the worker thread.
@@ -21,10 +24,10 @@ public class DownloadIntentService extends IntentService {
      */
     @Override
     protected void onHandleIntent(Intent intent) {
-        // Do work. For our sample, we just sleep for 5 seconds.
+        // Do work. For our sample, we just sleep for 7 seconds.
 
         try {
-            Thread.sleep(5000);
+            Thread.sleep(7000);
         } catch (InterruptedException e) {
         }
 
@@ -33,7 +36,9 @@ public class DownloadIntentService extends IntentService {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
-        Toast.makeText(this, "download service started at " + new java.util.Date(), Toast.LENGTH_SHORT).show();
+        filename = intent.getStringExtra("FILENAME");
+
+        Toast.makeText(this, filename+": download service started at " + new java.util.Date(), Toast.LENGTH_SHORT).show();
 
         // if you override onStartCommand(), be sure to return the default implementation
         return super.onStartCommand(intent, flags, startId);
@@ -41,7 +46,7 @@ public class DownloadIntentService extends IntentService {
 
     @Override
     public void onDestroy() {
-        Toast.makeText(this, "download service done at "+new java.util.Date(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, filename+": download service done at "+new java.util.Date(), Toast.LENGTH_SHORT).show();
 
         // if you override onDestroy(), be sure to call the default implementation
         super.onDestroy();

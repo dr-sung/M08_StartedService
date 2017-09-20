@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.ToggleButton;
 
 public class MainActivity extends Activity {
 
@@ -17,7 +18,9 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         service = new Intent(this, DownloadService.class);
-        intentService = new Intent(this, DownloadIntentService.class);
+        service.putExtra("FILENAME", "A huge image.jpg");
+
+
 
         Switch s1 = (Switch) findViewById(R.id.service_switch);
         s1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -31,7 +34,10 @@ public class MainActivity extends Activity {
             }
         });
 
-        Switch s2 = (Switch) findViewById(R.id.intentservice_switch);
+        intentService = new Intent(this, DownloadIntentService.class);
+        intentService.putExtra("FILENAME", "a big movie.mpg");
+
+        ToggleButton s2 = (ToggleButton) findViewById(R.id.intentservice_switch);
         s2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -42,5 +48,6 @@ public class MainActivity extends Activity {
                 }
             }
         });
+
     }
 }

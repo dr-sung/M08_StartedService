@@ -6,7 +6,8 @@
     <TextView
         android:id="@+id/tv"
         android:text="@string/tv_message"
-        android:textSize="20sp"
+        android:textSize="28sp"
+        android:background="@android:color/holo_blue_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -36,13 +37,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <Switch
+    <ToggleButton
         android:id="@+id/intentservice_switch"
         android:layout_below="@id/label1"
         android:layout_toEndOf="@id/label2"
-        android:textSize="20sp"
         android:textOff="@string/switch_off"
         android:textOn="@string/switch_on"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
 </RelativeLayout>

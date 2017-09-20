@@ -12,6 +12,7 @@ import android.widget.Toast;
 public class DownloadService extends Service {
 
     private Handler serviceHandler;
+    private String filename;
 
     @Override
     public void onCreate() {
@@ -25,9 +26,9 @@ public class DownloadService extends Service {
         serviceHandler = new Handler(thread.getLooper()) {
             @Override
             public void handleMessage(Message msg) {
-                // do work (simulation 5 sec sleep)
+                // do work (simulation 7 sec sleep)
                 try {
-                    Thread.sleep(5000);
+                    Thread.sleep(7000);
                 } catch (InterruptedException e) {
                 }
 
@@ -38,7 +39,9 @@ public class DownloadService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Toast.makeText(this, "download service started at " + new java.util.Date(), Toast.LENGTH_SHORT).show();
+
+        filename = intent.getStringExtra("FILENAME");
+        Toast.makeText(this, filename + ": download service started at " + new java.util.Date(), Toast.LENGTH_SHORT).show();
 
         Message msg = serviceHandler.obtainMessage();
         msg.arg1 = startId;
@@ -55,6 +58,6 @@ public class DownloadService extends Service {
 
     @Override
     public void onDestroy() {
-        Toast.makeText(this, "download service done at "+new java.util.Date(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, filename+": download service done at "+new java.util.Date(), Toast.LENGTH_SHORT).show();
     }
 }
