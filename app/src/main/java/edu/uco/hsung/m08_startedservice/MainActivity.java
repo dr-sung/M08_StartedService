@@ -3,8 +3,11 @@ package edu.uco.hsung.m08_startedservice;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 public class MainActivity extends Activity {
@@ -19,8 +22,6 @@ public class MainActivity extends Activity {
 
         service = new Intent(this, DownloadService.class);
         service.putExtra("FILENAME", "A huge image.jpg");
-
-
 
         Switch s1 = (Switch) findViewById(R.id.service_switch);
         s1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -46,6 +47,16 @@ public class MainActivity extends Activity {
                 } else {
                     stopService(intentService);
                 }
+            }
+        });
+
+        final TextView timeView = (TextView) findViewById(R.id.get_time_tv);
+
+        Button timeButton = (Button) findViewById(R.id.time_button);
+        timeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timeView.setText("" + new java.util.Date());
             }
         });
 

@@ -5,4 +5,6 @@ You may switch off to stop it before 7 sec passed.
     </string>
     <string name="switch_on">Start</string>
     <string name="switch_off">Stop</string>
+    <string name="get_time_message">No time display</string>
+    <string name="get_time_button">Get Current Time</string>
 </resources>
