@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">M08_StartedService</string>
     <string name="tv_message">Start Download service (done in 7 sec).\n
-You may switch off to stop it before 7 sec passed.
+You may switch off to stop it before 7 sec pass.
     </string>
     <string name="switch_on">Start</string>
     <string name="switch_off">Stop</string>
